@@ -2,7 +2,7 @@ bl_info = {
     "name": "Keymap Switcher",
     "description": "一键切换原生和行业兼容快捷键",
     "author": "Roland Vyens",
-    "version": (1, 0, 0),
+    "version": (1, 1, 0),
     "blender": (2, 80, 0),
     "category": "System",
     "doc_url": "https://github.com/RolandVyens?tab=repositories",
@@ -13,8 +13,10 @@ import bpy
 import os
 
 
-bl_path = os.getcwd()
-runtime_folder = os.listdir()
+# bl_path = os.getcwd()
+bl_path = bpy.app.binary_path
+bl_path = bl_path[:-12]
+runtime_folder = os.listdir(bl_path)
 bl_versionfolder = runtime_folder[0]
 blender_keymap = str(
     f"{bl_path}\\{bl_versionfolder}\\scripts\\presets\\keyconfig\\Blender.py"
